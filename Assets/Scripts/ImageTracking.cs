@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.ARFoundation;
@@ -10,7 +11,7 @@ public class ImageTracking : MonoBehaviour
     public string ReferenceImageName;
     private ARTrackedImageManager _TrackedImageManager;
 
-    void Awake()
+    private void Awake()
     {
         _TrackedImageManager = FindObjectOfType<ARTrackedImageManager>();
     }
@@ -31,7 +32,7 @@ public class ImageTracking : MonoBehaviour
         }
     }
     
-    private void OnTrackedImagesChanged(ARTrackedImagechangedEventArgs e)
+    private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs e)
     {
         foreach (var trackedImage in e.added)
         {
