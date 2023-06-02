@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -39,6 +41,13 @@ public class GameManager : MonoBehaviour
     {
         VE.clip = VEClip[index];
         VE.Play();
+    }
+
+    public IEnumerator StartGame()
+    {
+        yield return StartCoroutine(FadeToColor(0));
+        SceneManager.LoadScene("SampleScene2");
+
     }
 
     public IEnumerator Win()
